@@ -2,8 +2,13 @@ import axios from "axios";
 
 let TOKEN
 
+const localDB = localStorage.getItem('persist:root')
+let user;
 
-const user = (JSON.parse(JSON.parse(localStorage.getItem('persist:root')).currentUser))
+if (localDB) {
+    user = (JSON.parse(JSON.parse(localStorage.getItem('persist:root')).currentUser))
+}
+console.log(user, 'from request user')
 if (user) {
     TOKEN = user.token
 }
