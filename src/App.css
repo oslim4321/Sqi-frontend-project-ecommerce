@@ -1,0 +1,75 @@
+.danger {
+  background-color: red;
+}
+
+body {
+  transition: all 2s ease;
+  transition: transform 2s;
+  background-color: black;
+  /* border: 2px solid red; */
+}
+
+html::-webkit-scrollbar {
+  width: .2rem;
+}
+
+html::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: black;
+  border-radius: 5rem;
+}
+
+.listing {
+  transition: all 2s ease;
+  transition: transform 2s;
+}
+
+/* .listing li {
+  border-bottom: 1px solid white;
+  border-bottom-width: 0;
+} */
+
+/* .listing li:hover {
+  transition: all 2s ease;
+  transition: transform 2s;
+  border-bottom: 1px solid white !important;
+  border-bottom: 1px solid blue;
+  padding-bottom: .1rem !important;
+  font-size: 15px;
+} */
+
+.listing li {
+  /* display: inline-block; */
+  position: relative;
+  color: #0087ca;
+}
+
+.listing li::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #0087ca;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.listing li:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+  background-color: aquamarine;
+}
+
+
+
+
+
+.testso {
+  background-image: radial-gradient(circle, blue, rgb(21, 0, 255));
+}

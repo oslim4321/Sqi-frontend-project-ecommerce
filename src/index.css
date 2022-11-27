@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.type {
+  @apply text-center text-3xl font-bold mb-4 text-center text-3xl font-bold mb-4 text-center text-3xl font-bold mb-4 mt-2
+}
+
+.carting {
+  animation: bounce 2s ease-in-out infinite;
+
+}
+
+.bar {
+  animation: bounce 2s ease-in-out infinite;
+
+}
+
+@keyframes bounce {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.none {
+  transform: scale(0);
+}
+
+label {
+  margin-bottom: 10px;
+  font-weight: bolder;
+}
+
+
+/* Dashboard for student */
+:root {
+  --app-blue: #0244CF;
+  --app-item-bg: #DCE0E9;
+}
+
+header {
+  background: var(--app-blue);
+  border-bottom-left-radius: 10%;
+  border-bottom-right-radius: 10%;
+}
+
+main {
+  /* width of main is  83.33% 5/6 of the screen width */
+  left: calc((100% - 83.33%)/2);
+  top: 40%;
+}
+
+.item-cta {
+  background: var(--app-item-bg);
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none !important;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none !important;
+  /* IE and Edge */
+  scrollbar-width: none !important;
+  /* Firefox */
+}
