@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useLocation, useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { PublicRequest } from '../../../RequestMethod'
 import Loading from '../../../NotFound/Loading'
 import Filter from './Filter'
@@ -34,7 +34,7 @@ function AllCatFetch() {
                 if (id === 'All') {
                     result = await PublicRequest.get(`/product?page=${page}`)
                     setproduct(result.data.products)
-                    console.log(result, 'i did that')
+                        (result, 'i did that')
                     /* if pageiination is greater than One  alert the user to continue from where the stop*/
                     if (page > 1) {
                         showAlert(true, "green", `Hi continue from where you stop`);

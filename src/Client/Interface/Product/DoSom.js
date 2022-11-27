@@ -10,17 +10,17 @@ function DoSom() {
     //         .then((response) => response.json())
     //         .then((data) => {
     //             setproduct(data)
-    //             console.log(product)
-    //             console.log(product.length)
+    //             (product)
+    //             (product.length)
     //         });
     // }, [])
-    // console.log(product.Handle)
-    // console.log(product)
+    // (product.Handle)
+    // (product)
 
     useEffect(() => {
         const getProduct = async () => {
             const result = await PublicRequest.get('/product')
-            console.log(result.data)
+                (result.data)
             setproduct(result.data)
         }
         getProduct()

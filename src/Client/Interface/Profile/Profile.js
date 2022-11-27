@@ -25,7 +25,6 @@ function Profile() {
                 setAuthUser(true)
 
             } catch (error) {
-                console.log(error)
                 if (error.message === 'Network Error') {
                     navigate('/')
                     showAlert(true, 'red', `${error.message}`)
@@ -60,7 +59,7 @@ function Profile() {
     //     window.location.reload()
     // }
 
-    // console.log(userData._id)
+    // (userData._id)
 
     return (
         <div className='bg-slate-900  w-full py-10'>

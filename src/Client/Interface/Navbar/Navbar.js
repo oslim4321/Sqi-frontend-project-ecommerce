@@ -45,7 +45,7 @@ function Navbar() {
     };
     /* get product inside redux cart */
     const { products } = useSelector((state) => state.cart);
-    // console.log(products);
+    // (products);
     // showAlert(true, "green", `Item Added To Cart Successfully`)
     // const navigate = useNavigate()
     function viewCart() {
@@ -62,7 +62,7 @@ function Navbar() {
     }, [navigator.onLine])
     // showAlert(true, "blue", ` ${navigator.onLine ? "You are Online" : "You Are Offline"}`);
 
-    // console.log(`Your network status is ${navigator.onLine ? "Online" : "Offline"}`)
+    // (`Your network status is ${navigator.onLine ? "Online" : "Offline"}`)
 
     return (
         <div>

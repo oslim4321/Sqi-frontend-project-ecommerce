@@ -12,7 +12,7 @@ function TransSucces() {
     const Order = useSelector((state) => state.cart);
     const [singleOrder, setsingleOrder] = useState()
     const [prod, setprod] = useState()
-    // console.log(Order)
+    // (Order)
     let date = GetDate.toLocaleDateString()
     /* going to use it later */
     // {yourOrder?.map((ele) => (ele.product.map((ele) => (ele.productId))))}
@@ -24,13 +24,12 @@ function TransSucces() {
                 const res = await UserRequest.get(`/order/singleOrderOne/${id}`)
                 setsingleOrder(res.data)
             } catch (error) {
-                console.log(error)
             }
         }
         getUserSingleOrder()
     }, [])
 
-    console.log(singleOrder)
+        (singleOrder)
 
     /* fetch the product user order */
     useEffect(() => {
@@ -48,7 +47,7 @@ function TransSucces() {
 
     }, [singleOrder])
 
-    console.log(prod)
+        (prod)
     return (
         <div>
             <main>
@@ -185,8 +184,8 @@ function TransSucces() {
                                                 {singleOrder &&
                                                     singleOrder.map((order) => {
                                                         const { line1, country, city, postal_code } = order.address.address
-                                                        // console.log(order.address.address)
-                                                        console.log(order.key)
+                                                            // (order.address.address)
+                                                            (order.key)
                                                         return (
                                                             <div key={order}>
                                                                 <div className='text-slate-400'><span className='text-slate-200'>line1: </span> {line1}</div>

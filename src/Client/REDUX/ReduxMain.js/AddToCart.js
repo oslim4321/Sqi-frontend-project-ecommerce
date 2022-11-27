@@ -18,7 +18,7 @@ const cartSlice = createSlice({
         },
         removeFromCart: (state, action) => {
             const DoSo = state.products.splice(state.products.find(product => product.ID === action.payload), 1)
-            console.log(DoSo)
+                (DoSo)
         },
         addFavorite: (state, action) => {
             state.favorite.push(action.payload)

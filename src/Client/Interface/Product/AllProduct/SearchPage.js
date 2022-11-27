@@ -14,7 +14,7 @@ function SearchPage({ setproduct, setLoadingState }) {
         }
         setLoadingState(true)
         const result = await PublicRequest.get(`/product?search=${search}`)
-        // console.log(result)
+        // (result)
         const { products } = result.data
         if (products.length < 1) {
             showAlert(true, "blue", `sorry No Item check something Else`);

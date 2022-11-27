@@ -25,7 +25,7 @@ function TransSuccess() {
   }, [])
 
 
-  // console.log(userData._id)
+  // (userData._id)
   /* send  alll the orders details include the userID to the backend once the order is done*/
   useEffect(() => {
     const sendUserOrder = async () => {
@@ -42,9 +42,7 @@ function TransSuccess() {
         })
         setorderSend(res.data)
       } catch (error) {
-        console.log(error)
         setError(error.message)
-        console.log(Error)
         setTimeout(() => {
           // navigate('/NotSucces')
         }, 400);

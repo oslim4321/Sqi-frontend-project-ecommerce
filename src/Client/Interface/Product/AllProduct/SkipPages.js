@@ -15,7 +15,7 @@ function SkipPages({ category, setproduct, setLoadingState }) {
             setproduct(result.data.products)
             setLoadingState(false)
             save = localStorage.setItem('pageIndex', result.data.pageNum)
-            // console.log(result.data.pageNum)
+            // (result.data.pageNum)
         } catch (error) {
             showAlert(true, "red", `error ${error.message}`)
             setLoadingState(false)
@@ -26,7 +26,7 @@ function SkipPages({ category, setproduct, setLoadingState }) {
 
     }, [pageInd, save])
 
-    // console.log(pageInd, 'here')
+    // (pageInd, 'here')
     return (
         <div>
             <div className="mt-6">

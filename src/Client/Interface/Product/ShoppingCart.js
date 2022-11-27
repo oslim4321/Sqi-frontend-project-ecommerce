@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { v4 as uuidv4 } from 'uuid';
 import { removeFromCart } from '../../REDUX/ReduxMain.js/AddToCart';
-import EmptyCart from './EmptyCart';
+// import EmptyCart from './EmptyCart';
 import StripeCheckout from 'react-stripe-checkout';
 import { UserRequest } from '../../RequestMethod';
 import { GlobalOrdersInfo } from '../../Context/UserOrderInfo';
@@ -24,12 +24,12 @@ function ShoppingCart() {
     // const [activateButtIfUserTrue, setactivateButtIfUserTrue] = useState(false)
     const [stripeToken, setstripeToken] = useState(null)
     const ApiKEy = 'pk_test_51LomMgH3FDIF4YxGBzCvGdK8ztMmTZDAscmiLZJnsDLhZyOy144w8G4a8WuDLNqRWgsAks8Xb41cWqSCU9yNdD8x00UgI6Ay5e'
-    // console.log(product.products)
+    // (product.products)
 
     useEffect(() => {
         setfinalTotalPrice(product.products.reduce((acc, cur) => acc + Number(cur.price) * Number(cur.quantity), 0))
     }, [product])
-    // console.log(finalTotalPrice)
+    // (finalTotalPrice)
 
     const dispatch = useDispatch()
     // useEffect(() => {
@@ -50,7 +50,6 @@ function ShoppingCart() {
                     amount: finalTotalPrice * 100
                 });
                 if (res.data) {
-                    console.log(res.data)
                     setOrders(res.data)
                     navigate('/TransSuccess',)
                     setloadingState(false)

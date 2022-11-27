@@ -7,11 +7,11 @@ import { v4 as uuidv4 } from 'uuid';
 
 function PopingCart() {
     const { products } = useSelector((state) => state.cart);
-    // products.length ? console.log('aliamsulai') : console.log('bafffff')
+    // products.length ? ('aliamsulai') : ('bafffff')
     // if (products.length > 0) {
-    //     console.log('aliamsulai')
+    //     ('aliamsulai')
     // } else {
-    //     console.log('bafffff')
+    //     ('bafffff')
     // }
     return (
         <div>

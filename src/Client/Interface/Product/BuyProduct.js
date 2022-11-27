@@ -6,28 +6,43 @@ import Loading from '../../NotFound/Loading';
 import { addProduct, addFavorite } from '../../REDUX/ReduxMain.js/AddToCart';
 import { PublicRequest } from '../../RequestMethod';
 import { v4 as uuidv4 } from 'uuid';
-import { Rate } from 'antd'
+// import { Rate } from 'antd'
 
 
 function BuyProduct() {
+    let ProdCat
+    let { pathname } = useLocation()
+    const location = pathname.split('/')[2]
     const { showAlert } = GlobalDisplayAlert()
     const [singleProd, setsingleProd] = useState()
-    const [quantValue, setquantValue] = useState(1)
+    // const [quantValue, setquantValue] = useState(1)
     /* what to send to database */
     const [size, setsize] = useState()
     const [color, setcolor] = useState()
     const [quantity, setquantity] = useState();
     const dispatch = useDispatch();
+    ProdCat = singleProd?.category[0]
 
+
+    /* i write a function that perform addd to cart function and display alert, the fuction will onlu be called on ADDTOCART*/
+    function doAddTOCartFunc(product) {
+        return (dispatch(addProduct(product)), showAlert(true, "green", `Item Added To Cart Successfully`))
+    }
+
+    /* add to cart button, doAddTOCartFunc() will be called  */
     const AddCart = () => {
         const { image, price, title, _id } = singleProd
         const product = { image, price, title, _id, size, color, quantity, ID: uuidv4() }
+
+        if (ProdCat === 'maybelline') {
+            doAddTOCartFunc(product)
+            return
+        }
         if (!size || !color || !quantity) {
             showAlert(true, "red", `Please Make sure You Pick Size Color And Quantity`);
             return
         } else {
-            dispatch(addProduct(product))
-            showAlert(true, "green", `Item Added To Cart Successfully`)
+            doAddTOCartFunc(product)
         }
     }
     /* addFavorite */
@@ -39,8 +54,7 @@ function BuyProduct() {
     }
 
     /* work with products */
-    let { pathname } = useLocation()
-    const location = pathname.split('/')[2]
+
 
     useEffect(() => {
         const getSingleProd = async () => {
@@ -51,14 +65,8 @@ function BuyProduct() {
         getSingleProd()
     }, [])
 
-    // console.log(singleProd.rating)
 
 
-
-
-
-
-    // console.log(singleProd.rating[0].rate)
 
 
     const [sizeindex, setsizeindex] = useState();
@@ -219,7 +227,6 @@ function BuyProduct() {
 
                                                         {singleProd.color.map((color, index) => (
                                                             color.split(',').map((c, i) => (
-                                                                // console.log(c, i)
                                                                 <label key={color.color} onClick={() => { getColorIndex(i); setcolor(c) }} className={`-m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer bg-${c} ${i === colorIndex ? 'focus:outline ring-2 ring-blue-500' : ''}`} style={{ background: color }}>
                                                                     <input type="radio" value="660" className="sr-only" aria-labelledby="color-choice-0-label" />
                                                                     <p id="color-choice-0-label" className="sr-only">

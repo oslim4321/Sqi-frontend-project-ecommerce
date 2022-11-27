@@ -5,7 +5,7 @@ function Test() {
 
     async function getSomeFromServer() {
         const res = axios.get('http://localhost:400/iHaveReqyest')
-        console.log(res.data)
+            (res.data)
     }
     getSomeFromServer()
 

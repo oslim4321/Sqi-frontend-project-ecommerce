@@ -12,7 +12,7 @@ function ModalFilter({ setFilterModal }) {
     function handleFilter(e) {
 
         const { value, checked } = e.target;
-        // console.log(value, 'is', checked)
+        // (value, 'is', checked)
 
         const { size } = Filter;
 
@@ -28,7 +28,6 @@ function ModalFilter({ setFilterModal }) {
         }
 
     }
-    console.log(Filter)
     return (
         <div className=''>
 

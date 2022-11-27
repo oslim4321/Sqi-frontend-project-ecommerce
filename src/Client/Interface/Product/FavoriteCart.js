@@ -6,7 +6,6 @@ import EmptyCart from './EmptyCart';
 
 function FavoriteCart() {
     const { favorite } = useSelector((state) => state.cart);
-    console.log(favorite)
     return (
         <div>
             <div className="bg-slate-900 h-screen">

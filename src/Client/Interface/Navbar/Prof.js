@@ -19,7 +19,7 @@ function Prof({ subscribe, setsubscribe, setnavState }) {
     navigate('/Login');
     // window.location.reload()
   }
-  // console.log(userData._id, 'from profs')
+  // (userData._id, 'from profs')
   /* {`/Profile/${userData?._id}`} */
   return (
     <div>

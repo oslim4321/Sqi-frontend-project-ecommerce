@@ -8,7 +8,7 @@ export const SignupApi = async (dispatch, user) => {
     try {
         const res = await PublicRequest.post('user/Register', user)
         dispatch(signUpSuccess(res.data))
-        console.log(res.data)
+            (res.data)
     } catch (error) {
         dispatch(signupErr(error))
     }

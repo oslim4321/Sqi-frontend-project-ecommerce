@@ -13,7 +13,6 @@ function FilterAcceOut({ setLoadingState, setproduct, setFilterModal }) {
         try {
             // console.log(e.target.name, ':', e.target.value)
             const result = await PublicRequest.get(`/product?${e.target.name}=${e.target.value}`)
-            console.log(result)
             setLoadingState(false)
             if (result.data.products.length < 1) {
                 showAlert(true, "blue", `sorry No Item check something Else`);
@@ -23,15 +22,14 @@ function FilterAcceOut({ setLoadingState, setproduct, setFilterModal }) {
 
 
         } catch (error) {
-            console.log(error)
             setLoadingState(false)
         }
     }
 
-    function OpenFilterModal() {
-        setFilterModal(true)
+    // function OpenFilterModal() {
+    //     setFilterModal(true)
 
-    }
+    // }
 
     return (
         <div>

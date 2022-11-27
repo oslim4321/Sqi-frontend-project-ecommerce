@@ -8,23 +8,22 @@ import { Link } from 'react-router-dom'
 function UserOrder() {
     const { userData } = User()
     const [yourOrder, setyourOrder] = useState()
-    // console.log(userData._id, 'from user order')
+    // (userData._id, 'from user order')
 
     useEffect(() => {
         const getUserOrder = async () => {
             try {
                 const res = await UserRequest.get(`/order/${userData._id}`)
                 setyourOrder(res.data)
-                console.log(res.data)
+                    (res.data)
             } catch (error) {
-                console.log(error)
             }
         }
         userData && getUserOrder()
     }, [userData])
-    // console.log(yourOrder, 'order')
+        // (yourOrder, 'order')
 
-    console.log(yourOrder)
+        (yourOrder)
     /*  {yourOrder?.map((ele) => (ele.product.map((ele) => (ele.productId))))} */
     return (
         <div>

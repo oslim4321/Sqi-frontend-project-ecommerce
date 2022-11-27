@@ -6,7 +6,7 @@ import RegisterSuccessPage from './RegisterSuccessPage';
 
 function SignUp() {
     const user = useSelector((state) => state.register)
-    // console.log(user)
+    // (user)
     const [Errors, setErrors] = useState()
     const [data, setdata] = useState('')
     const [RegisterSuccessPageStatus, setRegisterSuccessPageStatus] = useState(false)

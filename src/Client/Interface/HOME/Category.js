@@ -7,7 +7,7 @@ function Category() {
     function makeup() {
         const getMakeUp = async () => {
             const result = await PublicRequest.get('/product?makeup=true')
-            console.log(result.data)
+                (result.data)
         }
         getMakeUp()
     }
