@@ -30,7 +30,7 @@ function Profile() {
                     showAlert(true, 'red', `${error.message}`)
                 } else {
                     setNotAuthUSer(error)
-                    navigate('/ugyig')
+                    // navigate('/ugyig')
                 }
 
             }
@@ -39,11 +39,11 @@ function Profile() {
     }, [])
 
     /* redirect the user to error if the ID is not valid */
-    useEffect(() => {
-        if (NotAuthUSer) {
-            navigate('/ugyig')
-        }
-    }, [NotAuthUSer])
+    // useEffect(() => {
+    //     if (NotAuthUSer) {
+    //         navigate('/ugyig')
+    //     }
+    // }, [NotAuthUSer])
 
     /* Welcome the user if ID is valid */
     useEffect(() => {

@@ -7,12 +7,12 @@ export const
             text: 'Home',
             //   icon: <FaHome />,
         },
-        {
-            id: 2,
-            url: '/Profile',
-            text: 'Profile',
-            //   icon: <FaHome />,
-        },
+        // {
+        //     id: 2,
+        //     url: '/Profile',
+        //     text: 'Profile',
+        //     //   icon: <FaHome />,
+        // },
         {
             id: 3,
             url: '/FavoriteCart',

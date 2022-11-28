@@ -2,22 +2,28 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { User } from '../../../User/User';
+import { GlobalDisplayAlert } from '../../Context/Alert';
 import { SignOut } from '../../REDUX/ReduxMain.js/Registration';
 
 function Prof({ subscribe, setsubscribe, setnavState }) {
+  const { showAlert } = GlobalDisplayAlert()
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const { userData } = User()
 
   const goProfile = () => {
     navigate(`/Profile/${userData?._id}`);
-    // window.location.reload()
+    window.location.reload()
   }
 
   const logout = () => {
-    dispatch(SignOut())
-    navigate('/Login');
-    // window.location.reload()
+    showAlert(true, "red", `page is refreshing you will lose all cart`);
+
+    setTimeout(() => {
+      dispatch(SignOut())
+      navigate('/Login');
+      window.location.reload()
+    }, 3000);
   }
   // (userData._id, 'from profs')
   /* {`/Profile/${userData?._id}`} */

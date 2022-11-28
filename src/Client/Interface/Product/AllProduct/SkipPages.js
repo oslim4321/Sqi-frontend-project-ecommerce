@@ -4,6 +4,7 @@ import { GlobalDisplayAlert } from '../../../Context/Alert';
 
 
 function SkipPages({ category, setproduct, setLoadingState }) {
+    // localStorage.setItem('pageIndex', 1)
     const { showAlert } = GlobalDisplayAlert()
     const [pageInd, setpageInd] = useState()
     let save

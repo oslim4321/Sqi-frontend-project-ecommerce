@@ -21,9 +21,7 @@ function UserOrder() {
         }
         userData && getUserOrder()
     }, [userData])
-        // (yourOrder, 'order')
-
-        (yourOrder)
+    // (yourOrder, 'order')
     /*  {yourOrder?.map((ele) => (ele.product.map((ele) => (ele.productId))))} */
     return (
         <div>

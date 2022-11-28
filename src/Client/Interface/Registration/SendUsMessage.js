@@ -34,7 +34,7 @@ function SendUsMessage() {
                 setmessageSent(false)
             }, 3000);
         }
-        DisplAlert()
+        // DisplAlert()
 
     }
 
