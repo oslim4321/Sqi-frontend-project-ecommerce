@@ -2,7 +2,6 @@ import React from 'react'
 import Apps from './Client/pages/Apps'
 
 import Snowfall from 'react-snowfall'
-// import ParticleBackground from './ParticleBackground'
 
 
 function Apping() {
@@ -23,7 +22,6 @@ function Apping() {
           snowflakeCount={70}
         />
       </div>
-      {/* <ParticleBackground /> */}
       <Apps />
 
 

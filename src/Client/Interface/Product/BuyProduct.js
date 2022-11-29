@@ -7,7 +7,6 @@ import { addProduct, addFavorite } from '../../REDUX/ReduxMain.js/AddToCart';
 import { PublicRequest } from '../../RequestMethod';
 import { v4 as uuidv4 } from 'uuid';
 import RelatedProduct from './RelatedProduct';
-// import { Rate } from 'antd'
 
 
 function BuyProduct() {
