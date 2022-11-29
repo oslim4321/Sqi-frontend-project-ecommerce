@@ -7,20 +7,22 @@ function SearchPage({ setproduct, setLoadingState }) {
     const { showAlert } = GlobalDisplayAlert()
     const [search, setsearch] = useState()
     async function searchItem(e) {
+        let result;
         e.preventDefault()
         if (!search) {
-            showAlert(true, "red", `Input Something`);
-            return
+            setLoadingState(true)
+            result = await PublicRequest.get(`/product`)
         }
         setLoadingState(true)
-        const result = await PublicRequest.get(`/product?search=${search}`)
-        // (result)
+        result = await PublicRequest.get(`/product?search=${search}`)
         const { products } = result.data
+
         if (products.length < 1) {
             showAlert(true, "blue", `sorry No Item check something Else`);
             setLoadingState(false)
             return
         }
+
         setproduct(products)
         setLoadingState(false)
 

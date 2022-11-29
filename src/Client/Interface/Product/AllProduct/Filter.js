@@ -10,6 +10,8 @@ function FilterAcceOut({ setLoadingState, setproduct, setFilterModal }) {
     /* get  color and size filter inside an object */
     const handleFilter = async (e) => {
         setLoadingState(true)
+        console.log(e.target.name, e.target.value)
+
         try {
             // console.log(e.target.name, ':', e.target.value)
             const result = await PublicRequest.get(`/product?${e.target.name}=${e.target.value}`)
@@ -106,6 +108,22 @@ function FilterAcceOut({ setLoadingState, setproduct, setFilterModal }) {
 
                             </fieldset>
                             {/* size end */}
+
+                            <fieldset>
+                                <legend className="block font-medium text-white">Category</legend>
+                                <div className="pt-6 space-y-6 sm:pt-4 sm:space-y-4 max-h-72 overflow-y-scrool">
+                                    <select defaultValue={'cate'} onChange={handleFilter} className="w-full bg-slate-700 text-white rounded p-2 mr-4 border focus:outline-none focus:border-blue-500 " name="category" id="">
+                                        <option value="cate" disabled>Category</option>
+                                        <option value="jewelery" className='uppercase'>jewelery</option>
+                                        <option value="men's clothing" className='uppercase'>MEN'S CLOTHING</option>
+                                        <option value="women's clothing" className='uppercase'>women's clothing</option>
+                                        <option value="electronics" className='uppercase'>electronics</option>
+                                        <option value="maybelline" className='uppercase'>maybelline</option>
+
+                                    </select>
+                                </div>
+
+                            </fieldset>
 
                         </div>
                         {/* filter items button  dtill working on it*/}

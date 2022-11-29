@@ -10,15 +10,23 @@ import UserOrder from './UserOrder'
 function Profile() {
     const { id } = useParams()
     const { showAlert } = GlobalDisplayAlert()
-    const { userData } = User()
+    // const { userData } = User()
+    const [userData, setuserData] = useState()
 
     const [AuthUser, setAuthUser] = useState()
     const [NotAuthUSer, setNotAuthUSer] = useState()
     // const dispatch = useDispatch()
     const navigate = useNavigate()
 
+    useEffect(() => {
+        setInterval(() => {
+            setuserData(JSON.parse(JSON.parse(localStorage.getItem('persist:root')).currentUser))
+        }, 200);
+
+    }, [])
 
     useEffect(() => {
+
         const CheckIfIdIsValid = async () => {
             try {
                 const res = await UserRequest.get(`/user/${id}`)
@@ -36,7 +44,11 @@ function Profile() {
             }
         }
         CheckIfIdIsValid()
+
+
     }, [])
+
+
 
     /* redirect the user to error if the ID is not valid */
     // useEffect(() => {
@@ -101,31 +113,6 @@ function Profile() {
 
                                                     <UserOrder />
                                                 }
-
-                                                {/* <a href="#" className="border-t border-gray-100 text-gray-600 py-4 pl-6 block hover:bg-gray-100 transition duration-150">
-                                            <img src="https://avatars0.githubusercontent.com/u/35900628?v=4" alt="" className="rounded-full h-6 shadow-md inline-block mr-2" />
-                                            Added new profile picture
-                                            <span className="text-gray-500 text-xs">42 min ago</span>
-                                        </a>
-
-                                        <a href="#" className=" border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 w-full block hover:bg-gray-100 transition duration-150">
-                                            <img src="https://avatars0.githubusercontent.com/u/35900628?v=4" alt="" className="rounded-full h-6 shadow-md inline-block mr-2" />
-                                            Posted new article in <span className="font-bold">#Web Dev</span>
-                                            <span className="text-gray-500 text-xs">49 min ago</span>
-                                        </a>
-
-                                        <a href="#" className="border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 w-full block hover:bg-gray-100 transition duration-150">
-                                            <img src="https://avatars0.githubusercontent.com/u/35900628?v=4" alt="" className="rounded-full h-6 shadow-md inline-block mr-2" />
-                                            Edited website settings
-                                            <span className="text-gray-500 text-xs">1 day ago</span>
-                                        </a>
-
-                                        <a href="#" className=" border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 w-full block hover:bg-gray-100 transition duration-150 overflow-hidden">
-                                            <img src="https://avatars0.githubusercontent.com/u/35900628?v=4" alt="" className="rounded-full h-6 shadow-md inline-block mr-2" />
-                                            Added new rank
-                                            <span className="text-gray-500 text-xs">5 days ago</span>
-                                        </a> */}
-
                                             </div>
                                         </div>
                                     </div>

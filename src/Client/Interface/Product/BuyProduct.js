@@ -6,6 +6,7 @@ import Loading from '../../NotFound/Loading';
 import { addProduct, addFavorite } from '../../REDUX/ReduxMain.js/AddToCart';
 import { PublicRequest } from '../../RequestMethod';
 import { v4 as uuidv4 } from 'uuid';
+import RelatedProduct from './RelatedProduct';
 // import { Rate } from 'antd'
 
 
@@ -62,7 +63,7 @@ function BuyProduct() {
             setsingleProd(res.data)
         }
         getSingleProd()
-    }, [])
+    }, [pathname])
 
 
 
@@ -80,13 +81,13 @@ function BuyProduct() {
     }
     let sizes = ['xs', 's', 'm', 'l', 'xl'];
     // let colors = ['red', 'yellow', 'green', 'purple']
-
     return (
         <div className='mt-20'>
             {
                 singleProd ?
 
                     <div className="bg-slate-900 mt-20 py-10">
+                        <h1 className="text-3xl text-white text-center">{ProdCat}</h1>
                         {/* <!-- Product details --> */}
                         <div className="max-w-2xl mx-auto mt-8 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
                             <div className="lg:grid lg:grid-cols-12 lg:auto-rows-min lg:gap-x-8">
@@ -96,7 +97,7 @@ function BuyProduct() {
                                     <h1 className="text-3xl font-bold text-gray-100">{singleProd.title}</h1>
                                     {/* <!-- Price --> */}
                                     <div className="mt-3">
-                                        <h2 className="sr-only">Product information</h2>
+                                        <h2 className="text-white">Product information</h2>
                                         <p className="text-3xl text-gray-100">
                                             $ {singleProd.price}
                                         </p>
@@ -105,7 +106,7 @@ function BuyProduct() {
                                     </p>
                                     {/* <!-- Rating --> */}
                                     <div className="mt-3">
-                                        <h3 className="sr-only">Reviews</h3>
+                                        <h3 className="text-white">Reviews</h3>
                                         <div className="flex items-center">
                                             <div className="flex items-center">
                                                 {/* <div className="h-5 w-5 flex-shrink-0 text-yellow-400 flex mb-10">
@@ -128,11 +129,11 @@ function BuyProduct() {
                                                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                                                 </svg>
                                             </div>
-                                            <div className="ml-4 flex">
-                                                <Link to='#' href="#reviews" className="text-sm font-medium text-blue-600 hover:text-blue-500">
+                                            {singleProd.rating && <div className="ml-4 flex">
+                                                <Link to='#' className="text-sm font-medium text-blue-600 hover:text-blue-500">
                                                     See all {singleProd.rating[0].count} reviews
                                                 </Link>
-                                            </div>
+                                            </div>}
                                             <p className="sr-only">4.3333333333333 out of 5 stars</p>
                                         </div>
                                     </div>
@@ -140,7 +141,7 @@ function BuyProduct() {
                                 {/* <!-- Media --> */}
                                 {/* all category pic */}
                                 <div className="mt-8 lg:mt-0 lg:col-start-1 lg:col-span-7 lg:row-start-1 lg:row-span-3">
-                                    <div x-data="" className="flex gap-x-2.5">
+                                    <div className="flex gap-x-2.5">
 
 
                                         {/*  overflow-x-scroll scroll-no-bar scroll-smooth */}
@@ -158,12 +159,10 @@ function BuyProduct() {
                                     <div>
                                         {singleProd.color && singleProd.color.length > 0 &&
                                             <div className="">
-                                                <h3 className="text-sm font-medium text-gray-100">
-                                                    Color
-                                                </h3>
+
 
                                                 <fieldset className="mt-2">
-                                                    <legend className="sr-only">
+                                                    <legend className="text-white">
                                                         Choose a Color
                                                     </legend>
                                                     <div className="flex items-center space-x-3">{/* focus:outline-none ring-2 ring-blue-500 */}
@@ -195,7 +194,7 @@ function BuyProduct() {
                                                 </h3>
 
                                                 <fieldset className="mt-2">
-                                                    <legend className="sr-only">
+                                                    <legend className="text-white">
                                                         Choose a Size
                                                     </legend>
                                                     {/* product size implementation */}
@@ -226,9 +225,16 @@ function BuyProduct() {
                                                 <input onChange={(e) => setquantity(Number(e.target.value))} value={quantity} className="shadow-sm border-gray-300 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 rounded-md py-3 w-28 text-sm text-center sm:text-base show-spinners" type="number" id="productQuantity" min="1" max="100" />
                                             </div>
                                             <div className="flex w-full">
-                                                <button onClick={AddCart} className="inline-flex items-center justify-center text-sm border border-transparent rounded-md font-medium focus:outline-none focus:ring disabled:opacity-25 disabled:cursor-not-allowed transition bg-blue-600 text-white hover:bg-blue-500 focus:border-blue-700 focus:ring-blue-200 active:bg-blue-600 flex-1 px-8 py-3 sm:w-full sm:text-base">
-                                                    Add to cart
-                                                </button>
+                                                {
+                                                    singleProd.inStock ?
+                                                        <button onClick={AddCart} className="inline-flex items-center justify-center text-sm border border-transparent rounded-md font-medium focus:outline-none focus:ring disabled:opacity-25 disabled:cursor-not-allowed transition bg-blue-600 text-white hover:bg-blue-500 focus:border-blue-700 focus:ring-blue-200 active:bg-blue-600 flex-1 px-8 py-3 sm:w-full sm:text-base">
+                                                            Add to cart
+                                                        </button>
+                                                        :
+                                                        <button className="inline-flex items-center justify-center text-sm border border-transparent rounded-md font-medium focus:outline-none focus:ring disabled:opacity-25 disabled:cursor-not-allowed transition bg-blue-600 text-white hover:bg-blue-500 focus:border-blue-700 focus:ring-blue-200 active:bg-blue-600 flex-1 px-8 py-3 sm:w-full sm:text-base">
+                                                            Not inStock
+                                                        </button>
+                                                }
                                                 <button onClick={addFavoriteProd} className="button button-icon button-pink bg-blue-300">
                                                     <i className="bi bi-balloon-heart-fill text-red-600 text-2xl"></i>
                                                 </button>
@@ -253,6 +259,8 @@ function BuyProduct() {
                     :
                     <Loading />
             }
+
+            <RelatedProduct ProdCat={ProdCat} />
         </div >
     )
 }

@@ -6,17 +6,24 @@ import { Link } from 'react-router-dom'
 
 
 function UserOrder() {
-    const { userData } = User()
+    const [userData, setuserData] = useState()
     const [yourOrder, setyourOrder] = useState()
     // (userData._id, 'from user order')
+
+    useEffect(() => {
+        setInterval(() => {
+            setuserData(JSON.parse(JSON.parse(localStorage.getItem('persist:root')).currentUser))
+        }, 200);
+
+    }, [])
 
     useEffect(() => {
         const getUserOrder = async () => {
             try {
                 const res = await UserRequest.get(`/order/${userData._id}`)
                 setyourOrder(res.data)
-                    (res.data)
             } catch (error) {
+                // console.log(error)
             }
         }
         userData && getUserOrder()

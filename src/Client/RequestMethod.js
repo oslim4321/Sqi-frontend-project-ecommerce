@@ -8,7 +8,6 @@ let user;
 if (localDB) {
     user = (JSON.parse(JSON.parse(localStorage.getItem('persist:root')).currentUser))
 }
-(user, 'from request user')
 if (user) {
     TOKEN = user.token
 }

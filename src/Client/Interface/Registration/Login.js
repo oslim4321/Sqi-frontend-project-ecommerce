@@ -95,10 +95,10 @@ function Login() {
 
                                 <div className="text-center text-sm text-grey-dark mt-4 text-white">
                                     By signing up, you agree to the
-                                    <Link to='/' className="no-underline border-b border-grey-dark text-grey-dark" href="#">
+                                    <Link to='/' className="no-underline border-b border-grey-dark text-grey-dark">
                                         Terms of Service
                                     </Link> and
-                                    <Link to='#' className="no-underline border-b border-grey-dark text-grey-dark" href="#">
+                                    <Link to='#' className="no-underline border-b border-grey-dark text-grey-dark">
                                         Privacy Policy
                                     </Link>
                                 </div>

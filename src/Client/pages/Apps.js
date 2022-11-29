@@ -18,6 +18,7 @@ import SendUsMessage from '../Interface/Registration/SendUsMessage'
 // import Nav from '../Interface/Navbar/SecontNavber/Nav'
 import FavoriteCart from '../Interface/Product/FavoriteCart'
 import ViewOrders from '../Interface/Profile/ViewOrders'
+import UserMessage from '../Interface/Profile/UserMessage'
 function App() {
   const { alert, showAlert } = GlobalDisplayAlert()
 
@@ -47,6 +48,7 @@ function App() {
           <Route path='/NotSucces' element={<NotSucces />}></Route>
           <Route path='/ViewOrders/:id' element={<ViewOrders />}></Route>
           <Route path='/SendUsMessage' element={<SendUsMessage />}></Route>
+          <Route path='/UserMessage' element={<UserMessage />}></Route>
           <Route path='*' element={<Errorpage />}></Route>
         </Routes>
       </Router>

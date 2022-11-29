@@ -5,6 +5,7 @@ import SendUsMessage from '../Registration/SendUsMessage';
 import Snowfall from 'react-snowfall';
 import { Link } from 'react-router-dom';
 import Cate from './Cate';
+import MostOrderProduct from './MostOrderProduct';
 
 
 function Home() {
@@ -63,9 +64,9 @@ function Home() {
                 </div>
             </div>
             <Product />
-            <SendUsMessage />
+            {/* <SendUsMessage /> */}
 
-            {/* <Review /> */}
+            {/* <MostOrderProduct /> */}
             <Footer />
         </div>
     )
