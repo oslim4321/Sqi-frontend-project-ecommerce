@@ -86,7 +86,7 @@ function BuyProduct() {
                 singleProd ?
 
                     <div className="bg-slate-900 mt-20 py-10">
-                        <h1 className="text-3xl text-white text-center">{ProdCat}</h1>
+                        <h1 className="text-3xl text-white text-center uppercase">{ProdCat}</h1>
                         {/* <!-- Product details --> */}
                         <div className="max-w-2xl mx-auto mt-8 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
                             <div className="lg:grid lg:grid-cols-12 lg:auto-rows-min lg:gap-x-8">

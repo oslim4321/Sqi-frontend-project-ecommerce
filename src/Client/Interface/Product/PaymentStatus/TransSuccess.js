@@ -24,10 +24,14 @@ function TransSuccess() {
     })
   }, [])
 
-
+  useEffect(() => {
+    settrigge(true)
+  }, [])
+  const [trigge, settrigge] = useState(false)
   // (userData._id)
   /* send  alll the orders details include the userID to the backend once the order is done*/
   useEffect(() => {
+
     const sendUserOrder = async () => {
       try {
         const res = await UserRequest.post('/order', {
@@ -49,7 +53,7 @@ function TransSuccess() {
       }
     }
     sendUserOrder()
-  }, [pathname])
+  }, [pathname, trigge])
 
   return (
 
@@ -84,7 +88,7 @@ function TransSuccess() {
           <Loading />
 
       }
-      <div className="text-red-500 text-2xl">{Error}</div>
+      {/* <div className="text-red-500 text-2xl">{Error}</div> */}
     </div>
   )
 }

@@ -83,7 +83,7 @@ function Navbar() {
                         </svg>
                         {/* toggle the contebt inside the cart */}
                         <span className="ml-2 text-sm font-medium text-white group-hover:text-gray-800">
-                            {products.length < 1 ? (!noItemInCart ? '0' : <i className="bi bi-x-lg text-white"></i>)
+                            {products.length < 1 ? (!noItemInCart ? '0' : <i className="bi bi-x-lg text-red-400"></i>)
                                 :
                                 (!noItemInCart ? products.length : (<i className="bi bi-x-lg text-white"></i>))}</span>
 

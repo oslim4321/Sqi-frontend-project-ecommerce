@@ -34,8 +34,8 @@ function UserOrder() {
         <div>
             {
                 yourOrder?.map((order) => (
-                    <Link to={`/ViewOrders/${order._id}`}>
-                        <div key={order._id} className="w-full border-t border-slate-700 text-slate-300 py-4 pl-6 pr-3 hover:bg-slate-700 transition duration-150  mb-10 inline-block">
+                    <Link key={order._id} to={`/ViewOrders/${order._id}`}>
+                        <div className="w-full border-t border-slate-700 text-slate-300 py-4 pl-6 pr-3 hover:bg-slate-700 transition duration-150  mb-10 inline-block">
                             <div className="flex">
                                 <img src="https://avatars0.githubusercontent.com/u/35900628?v=4" alt="" className="rounded-full h-6 shadow-md inline-block mr-2" />
                                 <p className='w-64 overflow-x-scroll md:overflow-hidden md:w-full'>{order._id} </p>

@@ -12,10 +12,9 @@ if (user) {
     TOKEN = user.token
 }
 
-// const Base_Url = 'http://localhost:3400/api/v1/Ecommerce/'
+// const Base_Url = 'http://localhost:3410/api/v1/Ecommerce/'
 const Base_Url = 'https://oslim4321-sqi-ecommerce-backend-production.up.railway.app/api/v1/Ecommerce/'
 
-// const Base_Url = 'https://react-node-ecommerce-oslim.herokuapp.com/api/v1/Ecommerce/'
 
 export const PublicRequest = axios.create({
     baseURL: Base_Url
