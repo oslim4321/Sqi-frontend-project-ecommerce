@@ -54,14 +54,9 @@ function TransSuccess() {
     sendUserOrder()
   }, [pathname, trigge])
 
-
-  useEffect(() => {
-    setTimeout(() => {
-      settrigge(true)
-    }, 2000);
-  }, [])
-
-
+  setTimeout(() => {
+    settrigge(true)
+  }, 3000);
   return (
 
     <div>
