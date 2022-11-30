@@ -58,7 +58,6 @@ function TransSuccess() {
   useEffect(() => {
     setTimeout(() => {
       settrigge(true)
-      console.log('been trigger')
     }, 2000);
   }, [])
 
