@@ -8,14 +8,13 @@ import { UserRequest } from '../../../RequestMethod'
 
 function TransSuccess() {
   const { products } = useSelector((state) => state.cart);
-  const { Orders } = GlobalOrdersInfo()
+  const { Orders, stripeSuccess } = GlobalOrdersInfo()
   const [OrderID, setOrderID] = useState()
   const [OrderQuantity, setOrderQuantity] = useState()
   const [Error, setError] = useState()
   const { userData } = User()
   const [orderSend, setorderSend] = useState()
   const { pathname } = useLocation()
-  const navigate = useNavigate()
   /* get all orders productID from products */
   useEffect(() => {
     products.map((order) => {
@@ -53,7 +52,7 @@ function TransSuccess() {
       }
     }
     sendUserOrder()
-  }, [pathname, trigge])
+  }, [pathname, trigge, stripeSuccess])
 
   return (
 

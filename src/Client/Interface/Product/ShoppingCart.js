@@ -13,7 +13,7 @@ import Loading from '../../NotFound/Loading';
 
 function ShoppingCart() {
     /* this order import is for saving the use orders inside context api so it can be access ani where */
-    const { setOrders } = GlobalOrdersInfo()
+    const { setOrders, setstripeSuccess } = GlobalOrdersInfo()
     const [loadingState, setloadingState] = useState(false)
     const { currentUser } = useSelector((state) => state.register);
     // const { userData } = User()
@@ -51,7 +51,9 @@ function ShoppingCart() {
                 });
                 if (res.data) {
                     setOrders(res.data)
+                    setstripeSuccess(true)
                     navigate('/TransSuccess',)
+
                     setloadingState(false)
                 } else {
                     navigate('/NotSucces')
