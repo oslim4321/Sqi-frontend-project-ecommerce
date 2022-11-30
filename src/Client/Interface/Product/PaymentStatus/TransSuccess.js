@@ -29,8 +29,9 @@ function TransSuccess() {
   const [trigge, settrigge] = useState(false)
   // (userData._id)
   /* send  alll the orders details include the userID to the backend once the order is done*/
-  useEffect(() => {
+  // useEffect(() => {
 
+  if (trigge) {
     const sendUserOrder = async () => {
       try {
         const res = await UserRequest.post('/order', {
@@ -52,7 +53,8 @@ function TransSuccess() {
       }
     }
     sendUserOrder()
-  }, [pathname, trigge, stripeSuccess])
+  }
+  // }, [pathname, trigge, stripeSuccess])
 
   return (
 
