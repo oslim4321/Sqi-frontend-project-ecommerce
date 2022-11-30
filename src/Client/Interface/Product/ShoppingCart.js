@@ -53,7 +53,6 @@ function ShoppingCart() {
                     setOrders(res.data)
                     setstripeSuccess(true)
                     navigate('/TransSuccess',)
-
                     setloadingState(false)
                 } else {
                     navigate('/NotSucces')

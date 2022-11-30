@@ -23,38 +23,38 @@ function TransSuccess() {
     })
   }, [])
 
-  useEffect(() => {
-    settrigge(true)
-  }, [])
+
   const [trigge, settrigge] = useState(false)
   // (userData._id)
   /* send  alll the orders details include the userID to the backend once the order is done*/
-  // useEffect(() => {
 
-  if (trigge) {
-    const sendUserOrder = async () => {
-      try {
-        const res = await UserRequest.post('/order', {
-          userId: userData._id,
-          product: [{
-            productId: OrderID,
-            quantity: OrderQuantity
-          }
-          ],
-          amount: Orders.amount,
-          address: Orders.billing_details
-        })
-        setorderSend(res.data)
-      } catch (error) {
-        setError(error.message)
-        setTimeout(() => {
-          // navigate('/NotSucces')
-        }, 400);
-      }
+  const sendUserOrder = async () => {
+    try {
+      const res = await UserRequest.post('/order', {
+        userId: userData._id,
+        product: [{
+          productId: OrderID,
+          quantity: OrderQuantity
+        }
+        ],
+        amount: Orders.amount,
+        address: Orders.billing_details
+      })
+      setorderSend(res.data)
+    } catch (error) {
+      setError(error.message)
+      setTimeout(() => {
+        // navigate('/NotSucces')
+      }, 400);
     }
-    sendUserOrder()
   }
-  // }, [pathname, trigge, stripeSuccess])
+
+
+  useEffect(() => {
+    sendUserOrder()
+    settrigge(true)
+  }, [pathname, trigge])
+
 
   return (
 
