@@ -3,7 +3,7 @@ import { getFilters } from '../../../Api/Product'
 import { GlobalDisplayAlert } from '../../../Context/Alert'
 import { PublicRequest } from '../../../RequestMethod'
 
-function FilterAcceOut({ setLoadingState, setproduct, setFilterModal }) {
+function FilterAcceOut({ setLoadingState, setproduct, setsearchCate }) {
     const { showAlert } = GlobalDisplayAlert()
     const [showFilter, setshowFilter] = useState(false)
 
@@ -15,13 +15,17 @@ function FilterAcceOut({ setLoadingState, setproduct, setFilterModal }) {
         try {
             // console.log(e.target.name, ':', e.target.value)
             const result = await PublicRequest.get(`/product?${e.target.name}=${e.target.value}`)
+
             setLoadingState(false)
             if (result.data.products.length < 1) {
                 showAlert(true, "blue", `sorry No Item check something Else`);
             } else {
                 setproduct(result.data.products)
             }
-
+            /* let the user know the what the are searching by showing them the text the pick */
+            if (e.target.value) {
+                setsearchCate(e.target.value)
+            } else { setsearchCate(null) }
 
         } catch (error) {
             setLoadingState(false)

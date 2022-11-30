@@ -14,8 +14,8 @@ function AllCatFetch() {
     const [product, setproduct] = useState()
     const [LoadingState, setLoadingState] = useState(false)
     const { id } = useParams()
-    const [FilterModal, setFilterModal] = useState(false)
-
+    // const [FilterModal, setFilterModal] = useState(false)
+    const [searchCate, setsearchCate] = useState()
     const page = localStorage.getItem('pageIndex')
 
     // const { pathname } = useLocation()
@@ -61,6 +61,7 @@ function AllCatFetch() {
                         <div className="mt-4 max-w-xl mx-auto text-base text-gray-500">
                             <SearchPage setproduct={setproduct} setLoadingState={setLoadingState} />
                         </div>
+                        <p className='text-white text-center text-2xl mt-2 capitalize'>{searchCate}</p>
                     </div>
 
                     {LoadingState ? <Loading />
@@ -68,13 +69,13 @@ function AllCatFetch() {
                         : <div className="pb-24 sm:pb-32 ">
                             <div>
                                 {/* <!-- Filters --> */}
-                                {!FilterModal ?
+                                {/* {!FilterModal ? */}
 
-                                    <Filter setLoadingState={setLoadingState} product={product} setproduct={setproduct} setFilterModal={setFilterModal} />
-                                    :
-                                    /* a modal pop up */
-                                    <ModalFilter setFilterModal={setFilterModal} />
-                                }
+                                <Filter setsearchCate={setsearchCate} setLoadingState={setLoadingState} product={product} setproduct={setproduct} />
+
+
+                                {/* <ModalFilter setFilterModal={setFilterModal} />
+                                } */}
 
                                 {/* < !--Products --> */}
                                 <section aria-labelledby="products-heading" className="max-w-7xl mx-auto overflow-hidden sm:px-6 lg:px-8">
