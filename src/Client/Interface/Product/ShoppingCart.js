@@ -79,12 +79,9 @@ function ShoppingCart() {
 
 
 
-    // useEffect(() => {
-       
-    //   }, [stripeSuccess])
-    if (stripeSuccess) {
+    
+    const sendUserOrder = async () => {
         console.log('i wil only be trigger when user order is success from stripe')
-        const sendUserOrder = async () => {
           try {
             const res = await UserRequest.post('/order', {
               userId: userData._id,
@@ -104,8 +101,12 @@ function ShoppingCart() {
             }, 400);
           }
         }
-        sendUserOrder()
-    }
+
+        useEffect(() => {
+            if (stripeSuccess) {
+                sendUserOrder()
+            }
+        }, [stripeSuccess])
 
 
 
