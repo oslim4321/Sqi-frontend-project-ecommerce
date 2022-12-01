@@ -1,68 +1,38 @@
-import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux';
+// import React, { useEffect, useState } from 'react'
+// import { useSelector } from 'react-redux';
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { User } from '../../../../User/User';
-import { GlobalOrdersInfo } from '../../../Context/UserOrderInfo'
-import Loading from '../../../NotFound/Loading';
-import { UserRequest } from '../../../RequestMethod'
+// import { User } from '../../../../User/User';
+// import { GlobalOrdersInfo } from '../../../Context/UserOrderInfo'
+// import Loading from '../../../NotFound/Loading';
+// import { UserRequest } from '../../../RequestMethod'
 
 function TransSuccess() {
-  const { products } = useSelector((state) => state.cart);
-  const { Orders, stripeSuccess } = GlobalOrdersInfo()
-  const [OrderID, setOrderID] = useState()
-  const [OrderQuantity, setOrderQuantity] = useState()
-  const [Error, setError] = useState()
-  const { userData } = User()
-  const [orderSend, setorderSend] = useState()
-  const { pathname } = useLocation()
+  
+  // const { Orders, stripeSuccess } = GlobalOrdersInfo()
+  // const [Error, setError] = useState()
+  // const [orderSend, setorderSend] = useState()
+  // const { pathname } = useLocation()
   /* get all orders productID from products */
-  useEffect(() => {
-    products.map((order) => {
-      setOrderID(order._id);
-      setOrderQuantity(order.quantity)
-    })
-  }, [])
+  
 
 
 
 
-  const [trigge, settrigge] = useState(false)
+  // const [trigge, settrigge] = useState(false)
   // (userData._id)
   /* send  alll the orders details include the userID to the backend once the order is done*/
 
-  useEffect(() => {
-    const sendUserOrder = async () => {
-      try {
-        const res = await UserRequest.post('/order', {
-          userId: userData._id,
-          product: [{
-            productId: OrderID,
-            quantity: OrderQuantity
-          }
-          ],
-          amount: Orders.amount,
-          address: Orders.billing_details
-        })
-        setorderSend(res.data)
-      } catch (error) {
-        setError(error.message)
-        setTimeout(() => {
-          // navigate('/NotSucces')
-        }, 400);
-      }
-    }
-    sendUserOrder()
-  }, [pathname, trigge])
+ 
 
-  setTimeout(() => {
-    settrigge(true)
-  }, 3000);
+  // setTimeout(() => {
+  //   settrigge(true)
+  // }, 3000);
   return (
 
     <div>
-      {
+      {/* {
         orderSend
-          ?
+          ? */}
           <div className="bg-gray-900 h-screen flex items-center justify-center">
             <div className="bg-slate-600 p-6  md:mx-auto">
               <svg viewBox="0 0 24 24" className="text-green-600 w-16 h-16 mx-auto my-6">
@@ -86,10 +56,10 @@ function TransSuccess() {
               </div>
             </div>
           </div>
-          :
+          {/* :
           <Loading />
 
-      }
+      } */}
       {/* <div className="text-red-500 text-2xl">{Error}</div> */}
     </div>
   )

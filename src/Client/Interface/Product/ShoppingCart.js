@@ -8,15 +8,17 @@ import StripeCheckout from 'react-stripe-checkout';
 import { UserRequest } from '../../RequestMethod';
 import { GlobalOrdersInfo } from '../../Context/UserOrderInfo';
 import Loading from '../../NotFound/Loading';
+import { User } from '../../../User/User';
 // import { User } from '../../../User/User'
 
 
 function ShoppingCart() {
     /* this order import is for saving the use orders inside context api so it can be access ani where */
-    const { setOrders, setstripeSuccess } = GlobalOrdersInfo()
+    // const { setOrders, setstripeSuccess } = GlobalOrdersInfo()
+    const [Orders, setOrders] = useState()
     const [loadingState, setloadingState] = useState(false)
     const { currentUser } = useSelector((state) => state.register);
-    // const { userData } = User()
+    const { userData } = User()
     const navigate = useNavigate()
     // const { pathname } = useLocation()
     const product = useSelector((state) => state.cart);
@@ -24,7 +26,7 @@ function ShoppingCart() {
     // const [activateButtIfUserTrue, setactivateButtIfUserTrue] = useState(false)
     const [stripeToken, setstripeToken] = useState(null)
     const ApiKEy = 'pk_test_51LomMgH3FDIF4YxGBzCvGdK8ztMmTZDAscmiLZJnsDLhZyOy144w8G4a8WuDLNqRWgsAks8Xb41cWqSCU9yNdD8x00UgI6Ay5e'
-    // (product.products)
+    const [stripeSuccess, setstripeSuccess] = useState(false)
 
     useEffect(() => {
         setfinalTotalPrice(product.products.reduce((acc, cur) => acc + Number(cur.price) * Number(cur.quantity), 0))
@@ -32,11 +34,6 @@ function ShoppingCart() {
     // (finalTotalPrice)
 
     const dispatch = useDispatch()
-    // useEffect(() => {
-    //     if (userData) {
-    //         setactivateButtIfUserTrue(true)
-    //     }
-    // }, [pathname])
 
     const onToken = (token) => {
         setstripeToken(token)
@@ -52,8 +49,6 @@ function ShoppingCart() {
                 if (res.data) {
                     setOrders(res.data)
                     setstripeSuccess(true)
-                    navigate('/TransSuccess',)
-                    setloadingState(false)
                 } else {
                     navigate('/NotSucces')
                 }
@@ -65,6 +60,52 @@ function ShoppingCart() {
         stripeToken && makeRequest()
     }, [stripeToken])
 
+
+
+    /* saving users orders if success */
+    const { products } = useSelector((state) => state.cart);
+    const [OrderID, setOrderID] = useState();
+    const [OrderQuantity, setOrderQuantity] = useState()
+
+
+
+    useEffect(() => {
+        products.map((order) => {
+          setOrderID(order._id);
+          setOrderQuantity(order.quantity)
+        })
+    }, [])
+    
+
+
+
+    // useEffect(() => {
+       
+    //   }, [stripeSuccess])
+    if (stripeSuccess) {
+        console.log('i wil only be trigger when user order is success from stripe')
+        const sendUserOrder = async () => {
+          try {
+            const res = await UserRequest.post('/order', {
+              userId: userData._id,
+              product: [{
+                productId: OrderID,
+                quantity: OrderQuantity
+              }
+              ],
+              amount: Orders.amount,
+              address: Orders.billing_details
+            })
+            navigate('/TransSuccess',)
+          } catch (error) {
+            // setError(error.message)
+            setTimeout(() => {
+                navigate('/NotSucces')
+            }, 400);
+          }
+        }
+        sendUserOrder()
+    }
 
 
 
