@@ -84,7 +84,7 @@ function ShoppingCart() {
     const sendUserOrder = async () => {
         try {
             const res = await UserRequest.post('/order', {
-              userId: userData._id,
+              userId: userData ? userData._id : '404',
               product: [{
                 productId: OrderID,
                 quantity: OrderQuantity
