@@ -49,7 +49,7 @@ function PopingCart() {
                             
 
                         } */}
-                        {products.length > 0 && <Link to='/' className="items-center justify-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-medium text-white hover:bg-blue-500 focus:outline-none focus:border-blue-700 focus:ring focus:ring-blue-200
+                        {products.length > 0 && <Link to='/ShoppingCart' className="items-center justify-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-medium text-white hover:bg-blue-500 focus:outline-none focus:border-blue-700 focus:ring focus:ring-blue-200
                          active:bg-blue-600 transition block w-full text-sm text-center">
                             Checkout
                         </Link>}

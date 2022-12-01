@@ -27,6 +27,8 @@ function ShoppingCart() {
     const [stripeToken, setstripeToken] = useState(null)
     const ApiKEy = 'pk_test_51LomMgH3FDIF4YxGBzCvGdK8ztMmTZDAscmiLZJnsDLhZyOy144w8G4a8WuDLNqRWgsAks8Xb41cWqSCU9yNdD8x00UgI6Ay5e'
     const [stripeSuccess, setstripeSuccess] = useState(false)
+    const [address, setaddress] = useState()
+
 
     useEffect(() => {
         setfinalTotalPrice(product.products.reduce((acc, cur) => acc + Number(cur.price) * Number(cur.quantity), 0))
@@ -48,6 +50,7 @@ function ShoppingCart() {
                 });
                 if (res.data) {
                     setOrders(res.data)
+                    setaddress(res.data.billing_details)
                     setstripeSuccess(true)
                 } else {
                     navigate('/NotSucces')
@@ -58,7 +61,7 @@ function ShoppingCart() {
             }
         }
         stripeToken && makeRequest()
-    }, [stripeToken])
+    }, [stripeToken, navigate])
 
 
 
@@ -72,17 +75,14 @@ function ShoppingCart() {
     useEffect(() => {
         products.map((order) => {
           setOrderID(order._id);
-          setOrderQuantity(order.quantity)
+            setOrderQuantity(order.quantity)
         })
     }, [])
-    
-
 
 
     
     const sendUserOrder = async () => {
-        console.log('i wil only be trigger when user order is success from stripe')
-          try {
+        try {
             const res = await UserRequest.post('/order', {
               userId: userData._id,
               product: [{
@@ -91,15 +91,11 @@ function ShoppingCart() {
               }
               ],
               amount: Orders.amount,
-              address: Orders.billing_details
+              address: address
             })
             navigate('/TransSuccess',)
           } catch (error) {
-            // setError(error.message)
-            setTimeout(() => {
-                navigate('/NotSucces')
-                console.log('from my self')
-            }, 400);
+            console.log(error)
           }
         }
 
@@ -108,7 +104,6 @@ function ShoppingCart() {
                 sendUserOrder()
             }
         }, [stripeSuccess])
-
 
 
 

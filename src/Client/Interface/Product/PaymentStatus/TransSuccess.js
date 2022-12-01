@@ -17,7 +17,7 @@ function TransSuccess() {
               <div className="text-center">
                 <h3 className="md:text-2xl text-base text-white font-semibold text-center">Payment Done!</h3>
                 {/* <p className="text-slate-200 my-2">Thank you for completing your secure online payment.</p> */}
-                <p className="text-slate-200 my-2">Thank you for payment completing your orders will get to you in short while  .</p>
+                <p className="text-slate-200 my-2">Thank you for payment completion. your orders will get to you in short while  .</p>
                 <p className='text-white'> Have a great day!  </p>
                 <div className="py-10 text-center">
                   <Link to='/' className="px-12 bg-blue-400 hover:bg-blue-300 text-white font-semibold py-3 uppercase">
