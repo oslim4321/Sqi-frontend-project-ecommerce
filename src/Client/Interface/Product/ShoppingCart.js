@@ -18,9 +18,8 @@ function ShoppingCart() {
     const [Orders, setOrders] = useState()
     const [loadingState, setloadingState] = useState(false)
     const { currentUser } = useSelector((state) => state.register);
-    const { userData } = User()
     const navigate = useNavigate()
-    // const { pathname } = useLocation()
+    const [userData, setuserData] = useState()
     const product = useSelector((state) => state.cart);
     const [finalTotalPrice, setfinalTotalPrice] = useState()
     // const [activateButtIfUserTrue, setactivateButtIfUserTrue] = useState(false)
@@ -40,8 +39,11 @@ function ShoppingCart() {
     const onToken = (token) => {
         setstripeToken(token)
     }
+    setuserData(JSON.parse(JSON.parse(localStorage.getItem('persist:root')).currentUser))
+
     /* redirct the use if success */
     useEffect(() => {
+        
         const makeRequest = async () => {
             try {
                 const res = await UserRequest.post('/product/stripe', {
@@ -84,7 +86,7 @@ function ShoppingCart() {
     const sendUserOrder = async () => {
         try {
             const res = await UserRequest.post('/order', {
-              userId: userData ? userData._id : '404',
+              userId: userData,
               product: [{
                 productId: OrderID,
                 quantity: OrderQuantity
