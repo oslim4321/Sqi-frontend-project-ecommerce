@@ -1,38 +1,12 @@
-// import React, { useEffect, useState } from 'react'
-// import { useSelector } from 'react-redux';
-import { Link, useLocation, useNavigate } from 'react-router-dom'
-// import { User } from '../../../../User/User';
-// import { GlobalOrdersInfo } from '../../../Context/UserOrderInfo'
-// import Loading from '../../../NotFound/Loading';
-// import { UserRequest } from '../../../RequestMethod'
+
+import { Link, } from 'react-router-dom'
 
 function TransSuccess() {
-  
-  // const { Orders, stripeSuccess } = GlobalOrdersInfo()
-  // const [Error, setError] = useState()
-  // const [orderSend, setorderSend] = useState()
-  // const { pathname } = useLocation()
-  /* get all orders productID from products */
-  
 
-
-
-
-  // const [trigge, settrigge] = useState(false)
-  // (userData._id)
-  /* send  alll the orders details include the userID to the backend once the order is done*/
-
- 
-
-  // setTimeout(() => {
-  //   settrigge(true)
-  // }, 3000);
   return (
 
     <div>
-      {/* {
-        orderSend
-          ? */}
+
           <div className="bg-gray-900 h-screen flex items-center justify-center">
             <div className="bg-slate-600 p-6  md:mx-auto">
               <svg viewBox="0 0 24 24" className="text-green-600 w-16 h-16 mx-auto my-6">
@@ -49,18 +23,10 @@ function TransSuccess() {
                   <Link to='/' className="px-12 bg-blue-400 hover:bg-blue-300 text-white font-semibold py-3 uppercase">
                     go back
                   </Link>
-                  {/* <Link to='/ViewOrders' className="px-5 mx-2 bg-blue-400 hover:bg-blue-300 text-white font-semibold py-2 uppercase">
-                  See Orders
-                </Link> */}
                 </div>
               </div>
             </div>
           </div>
-          {/* :
-          <Loading />
-
-      } */}
-      {/* <div className="text-red-500 text-2xl">{Error}</div> */}
     </div>
   )
 }

@@ -98,6 +98,7 @@ function ShoppingCart() {
             // setError(error.message)
             setTimeout(() => {
                 navigate('/NotSucces')
+                console.log('from my self')
             }, 400);
           }
         }
