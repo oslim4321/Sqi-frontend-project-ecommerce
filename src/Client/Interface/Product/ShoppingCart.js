@@ -39,8 +39,12 @@ function ShoppingCart() {
     const onToken = (token) => {
         setstripeToken(token)
     }
-    setuserData(JSON.parse(JSON.parse(localStorage.getItem('persist:root')).currentUser))
+    useEffect(() => {
+        setInterval(() => {
+            setuserData(JSON.parse(JSON.parse(localStorage.getItem('persist:root')).currentUser))
+        }, 200);
 
+    }, [])
     /* redirct the use if success */
     useEffect(() => {
         
