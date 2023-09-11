@@ -29,7 +29,7 @@ export const PublicRequest = axios.create({
 //     }
 // })
 
-export const UserRequest = (token) => {
+export const UserRequest = () => {
 
     let TOKEN
 
@@ -46,7 +46,7 @@ export const UserRequest = (token) => {
         baseURL: Base_Url,
         headers: {
             "Content-Type": "application/json",
-            token: `Bearer ${token}`,
+            token: `Bearer ${TOKEN}`,
         },
     });
 };
