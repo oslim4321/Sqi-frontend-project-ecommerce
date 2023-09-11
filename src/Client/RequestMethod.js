@@ -14,7 +14,7 @@ if (user) {
 
 // const Base_Url = 'http://localhost:3410/api/v1/Ecommerce/'
 // const Base_Url = 'https://oslim4321-sqi-ecommerce-backend-production.up.railway.app/api/v1/Ecommerce/'
-const Base_Url = "https://crowded-bee-purse.cyclic.app/"
+const Base_Url = "https://crowded-bee-purse.cyclic.app/api/v1/Ecommerce/"
 
 
 export const PublicRequest = axios.create({
