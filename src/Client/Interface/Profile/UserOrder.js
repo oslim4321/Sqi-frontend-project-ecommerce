@@ -20,7 +20,7 @@ function UserOrder() {
     useEffect(() => {
         const getUserOrder = async () => {
             try {
-                const res = await UserRequest.get(`/order/${userData._id}`)
+                const res = await UserRequest().get(`/order/${userData._id}`)
                 setyourOrder(res.data)
             } catch (error) {
                 // console.log(error)

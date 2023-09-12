@@ -50,7 +50,7 @@ function ShoppingCart() {
         
         const makeRequest = async () => {
             try {
-                const res = await UserRequest.post('/product/stripe', {
+                const res = await UserRequest().post('/product/stripe', {
                     tokinId: stripeToken.id,
                     amount: finalTotalPrice * 100
                 });

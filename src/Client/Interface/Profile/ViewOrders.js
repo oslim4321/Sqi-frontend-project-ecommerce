@@ -21,7 +21,7 @@ function TransSucces() {
     useEffect(() => {
         async function getUserSingleOrder() {
             try {
-                const res = await UserRequest.get(`/order/singleOrderOne/${id}`)
+                const res = await UserRequest().get(`/order/singleOrderOne/${id}`)
                 setsingleOrder(res.data)
             } catch (error) {
             }
@@ -34,7 +34,7 @@ function TransSucces() {
         singleOrder && singleOrder.map((elem) => elem.product.map(({ productId }) => {
             // return () => {
             async function getOrderProd() {
-                const res = await UserRequest.get(`/product/${productId}`)
+                const res = await UserRequest().get(`/product/${productId}`)
                 setprod(res.data)
             }
             getOrderProd()
