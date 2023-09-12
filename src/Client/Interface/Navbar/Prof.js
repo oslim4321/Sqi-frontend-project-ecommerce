@@ -20,7 +20,7 @@ function Prof({ subscribe, setsubscribe, setnavState }) {
 
   const goProfile = () => {
     navigate(`/Profile/${userData?._id}`);
-    window.location.reload()
+    // window.location.reload()
   }
 
   const logout = () => {
