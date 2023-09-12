@@ -28,9 +28,7 @@ export const LoginApi = async (dispatch, user) => {
     try {
         const res = await PublicRequest.post('user/Login', user)
         dispatch(LoginSuccess(res.data))
-        console.log(res, 'res');
     } catch (error) {
-        console.log(error);
         dispatch(LoginErr(error, 'error'))
     }
 }
