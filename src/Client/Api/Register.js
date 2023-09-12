@@ -1,6 +1,15 @@
 // import { LoginErr, LoginStart, LoginSuccess } from "../REDUX/ReduxMain.js/Login"
-import { LoginErr, LoginStart, LoginSuccess, signupErr, signUpStart, signUpSuccess } from "../REDUX/ReduxMain.js/Registration"
-import { PublicRequest } from "../RequestMethod"
+import {
+    LoginErr,
+    LoginStart,
+    LoginSuccess,
+    signupErr,
+    signUpStart,
+    signUpSuccess
+} from "../REDUX/ReduxMain.js/Registration"
+import {
+    PublicRequest
+} from "../RequestMethod"
 
 /*Register user  */
 export const SignupApi = async (dispatch, user) => {
@@ -19,9 +28,9 @@ export const LoginApi = async (dispatch, user) => {
     try {
         const res = await PublicRequest.post('user/Login', user)
         dispatch(LoginSuccess(res.data))
+        console.log(res, 'res');
     } catch (error) {
-        dispatch(LoginErr(error))
+        console.log(error);
+        dispatch(LoginErr(error, 'error'))
     }
 }
-
-
