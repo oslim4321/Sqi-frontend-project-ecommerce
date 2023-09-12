@@ -176,7 +176,7 @@ function Navbar() {
 
                 {
                     backToTop &&
-                    <div onClick={backToTopButt} className="flex items-start justify-start fixed bottom-0 left-0 mb-4 m-4 z-10 animate-bounce ">
+                    <div onClick={backToTopButt} className="flex items-end justify-end fixed bottom-0 right-0 mb-4 m-4 z-10 animate-bounce ">
                         <div>
                             <button className='hover:bg-blue-400 rounded-full w-16 h-16 hover:text-white hover:border-transparent transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0 mr-1 md:w-20 md:h-20'><i className="bi bi-arrow-up text-2xl text-white  hover:text-white hover:border-transparent transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0 mr-1"></i></button>
                         </div>
